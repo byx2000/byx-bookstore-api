@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * 电子书控制器
+ */
 @RestController
 @RequestMapping("/book")
 public class BookController
@@ -22,7 +25,7 @@ public class BookController
     {
         if (count == null) return Result.fail(Status.PARAMETER_MISS("count"));
 
-        List<Book> books = bookService.getRecommend(count);
+        List<Book> books = bookService.recommend(count);
         for (Book b : books)
         {
             b.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + b.getId() + ".jpg");

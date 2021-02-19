@@ -5,8 +5,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 电子书服务接口
+ */
 @Service
 public interface BookService
 {
-    List<Book> getRecommend(int count);
+    /**
+     * 获取推荐电子书
+     * @param count 数量
+     */
+    List<Book> recommend(int count);
 }

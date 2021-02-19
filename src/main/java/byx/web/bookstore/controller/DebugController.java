@@ -25,7 +25,7 @@ public class DebugController
     {
         System.out.println(bookService);
 
-        List<Book> books = bookService.getRecommend(5);
+        List<Book> books = bookService.recommend(5);
         for (Book b : books)
         {
             System.out.println(b.getName() + " " + b.getAuthor());

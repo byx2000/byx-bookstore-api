@@ -15,7 +15,7 @@ public class BookServiceImpl implements BookService
     private BookMapper bookMapper;
 
     @Override
-    public List<Book> getRecommend(int count)
+    public List<Book> recommend(int count)
     {
         return bookMapper.getRecommend(count);
     }
