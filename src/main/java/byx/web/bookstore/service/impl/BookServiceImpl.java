@@ -2,6 +2,7 @@ package byx.web.bookstore.service.impl;
 
 import byx.web.bookstore.entity.Book;
 import byx.web.bookstore.mapper.BookMapper;
+import byx.web.bookstore.query.BookQueryObject;
 import byx.web.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,11 @@ public class BookServiceImpl implements BookService
     public List<Book> recommendOfCategory(int categoryId, int count)
     {
         return bookMapper.getRecommendOfCategory(categoryId, count);
+    }
+
+    @Override
+    public List<Book> query(BookQueryObject qo)
+    {
+        return bookMapper.list(qo);
     }
 }

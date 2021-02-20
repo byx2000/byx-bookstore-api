@@ -12,4 +12,37 @@
         SELECT * FROM books WHERE categoryId = #{categoryId} LIMIT #{count}
     </select>
 
+    <select id="list" resultType="Book">
+        SELECT * FROM books
+        <where>
+            <if test="categoryId != null">AND categoryId = #{categoryId}</if>
+            <if test="scoreRange.min != null">AND score >= #{scoreRange.min}</if>
+            <if test="scoreRange.max != null">AND score &lt;= #{scoreRange.max}</if>
+            <if test="heatRange.min != null">AND heat >= #{heatRange.min}</if>
+            <if test="heatRange.max != null">AND heat &lt;= #{heatRange.max}</if>
+            <if test="updateAfter != null">AND (julianday('now') - julianday(updateTime)) &lt;= #{updateAfter}</if>
+        </where>
+        <if test="orderBy != null">
+            ORDER BY
+            <choose>
+                <when test="orderBy == 'score'">score</when>
+                <when test="orderBy == 'heat'">heat</when>
+                <when test="orderBy == 'likeCount'">likeCount</when>
+                <when test="orderBy == 'wordCount'">wordCount</when>
+                <otherwise>
+                    RANDOM()
+                </otherwise>
+            </choose>
+            <if test="orderType != null">
+                <choose>
+                    <when test="orderType == 'desc'">DESC</when>
+                    <otherwise>ASC</otherwise>
+                </choose>
+            </if>
+        </if>
+        <if test="pageSize != null 	&amp;&amp; currentPage != null">
+            LIMIT #{limit} OFFSET #{offset}
+        </if>
+    </select>
+
 </mapper>

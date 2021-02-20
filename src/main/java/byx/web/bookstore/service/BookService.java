@@ -1,6 +1,7 @@
 package byx.web.bookstore.service;
 
 import byx.web.bookstore.entity.Book;
+import byx.web.bookstore.query.BookQueryObject;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface BookService
      * @param count 数量
      */
     List<Book> recommendOfCategory(int categoryId, int count);
+
+    List<Book> query(BookQueryObject qo);
 }
