@@ -44,6 +44,11 @@ public class BookController
     @RequestMapping("/query")
     public Result query(@RequestBody BookQueryObject qo)
     {
-        return Result.success(bookService.query(qo));
+        List<Book> books = bookService.query(qo);
+        for (Book b : books)
+        {
+            b.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + b.getId() + ".jpg");
+        }
+        return Result.success(books);
     }
 }
