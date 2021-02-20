@@ -19,4 +19,10 @@ public class BookServiceImpl implements BookService
     {
         return bookMapper.getRecommend(count);
     }
+
+    @Override
+    public List<Book> recommendOfCategory(int categoryId, int count)
+    {
+        return bookMapper.getRecommendOfCategory(categoryId, count);
+    }
 }

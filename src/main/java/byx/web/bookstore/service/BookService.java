@@ -16,4 +16,11 @@ public interface BookService
      * @param count 数量
      */
     List<Book> recommend(int count);
+
+    /**
+     * 获取指定类型的推荐电子书
+     * @param categoryId 类型id
+     * @param count 数量
+     */
+    List<Book> recommendOfCategory(int categoryId, int count);
 }

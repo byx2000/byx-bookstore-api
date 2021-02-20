@@ -21,11 +21,16 @@ public class BookController
     private BookService bookService;
 
     @RequestMapping("/recommend")
-    public Result getRecommend(Integer count)
+    public Result getRecommend(Integer count, Integer categoryId)
     {
         if (count == null) return Result.fail(Status.PARAMETER_MISS("count"));
 
-        List<Book> books = bookService.recommend(count);
+        List<Book> books;
+        if (categoryId == null)
+            books = bookService.recommend(count);
+        else
+            books = bookService.recommendOfCategory(categoryId, count);
+
         for (Book b : books)
         {
             b.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + b.getId() + ".jpg");

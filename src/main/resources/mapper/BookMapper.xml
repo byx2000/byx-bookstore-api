@@ -8,4 +8,8 @@
         SELECT * FROM books LIMIT #{count}
     </select>
 
+    <select id="getRecommendOfCategory" resultType="Book">
+        SELECT * FROM books WHERE categoryId = #{categoryId} LIMIT #{count}
+    </select>
+
 </mapper>
