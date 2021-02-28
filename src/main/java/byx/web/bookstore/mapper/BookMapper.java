@@ -1,7 +1,7 @@
 package byx.web.bookstore.mapper;
 
-import byx.web.bookstore.entity.Book;
-import byx.web.bookstore.query.BookQueryObject;
+import byx.web.bookstore.pojo.dto.BookClassificationQueryDTO;
+import byx.web.bookstore.pojo.po.BookPO;
 
 import java.util.List;
 
@@ -10,7 +10,28 @@ import java.util.List;
  */
 public interface BookMapper
 {
-    List<Book> getRecommend(int count);
-    List<Book> getRecommendOfCategory(int categoryId, int count);
-    List<Book> list(BookQueryObject qo);
+    /**
+     * 获取推荐列表
+     * @param count 数量
+     */
+    List<BookPO> listRecommend(Integer count);
+
+    /**
+     * 获取指定类别的推荐列表
+     * @param categoryId 类型id
+     * @param count 数量
+     */
+    List<BookPO> listRecommendByCategoryId(Integer categoryId, Integer count);
+
+    /**
+     * 获取分类查询列表
+     * @param qo 查询条件
+     */
+    List<BookPO> listClassificationQueryResult(BookClassificationQueryDTO qo);
+
+    /**
+     * 获取分类查询的结果总数
+     * @param qo 查询条件
+     */
+    int countOfClassificationQueryResult(BookClassificationQueryDTO qo);
 }

@@ -2,10 +2,12 @@ package byx.web.bookstore.controller;
 
 import byx.web.bookstore.common.Result;
 import byx.web.bookstore.common.Status;
-import byx.web.bookstore.entity.Book;
-import byx.web.bookstore.query.BookQueryObject;
+import byx.web.bookstore.pojo.dto.BookClassificationQueryDTO;
+import byx.web.bookstore.pojo.dto.BookRecommendQueryDTO;
+import byx.web.bookstore.pojo.vo.BookItemVO;
 import byx.web.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,33 +24,26 @@ public class BookController
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("/recommend")
-    public Result recommend(Integer count, Integer categoryId)
+    /**
+     * 获取电子书推荐列表
+     */
+    @PostMapping("/recommend")
+    public Result recommend(@RequestBody BookRecommendQueryDTO dto)
     {
-        if (count == null) return Result.fail(Status.PARAMETER_MISS("count"));
+        if (dto.getCount() == null) return Result.fail(Status.PARAMETER_MISS("count"));
 
-        List<Book> books;
-        if (categoryId == null)
-            books = bookService.recommend(count);
+        List<BookItemVO> vos;
+        if (dto.getCategoryId() == null)
+            vos = bookService.recommend(dto.getCount());
         else
-            books = bookService.recommendOfCategory(categoryId, count);
+            vos = bookService.recommendOfCategory(dto.getCategoryId(), dto.getCount());
 
-        for (Book b : books)
-        {
-            b.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + b.getId() + ".jpg");
-        }
-
-        return Result.success(books);
+        return Result.success(vos);
     }
 
-    @RequestMapping("/query")
-    public Result query(@RequestBody BookQueryObject qo)
+    @PostMapping("/classification")
+    public Result classificationQuery(@RequestBody BookClassificationQueryDTO dto)
     {
-        List<Book> books = bookService.query(qo);
-        for (Book b : books)
-        {
-            b.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + b.getId() + ".jpg");
-        }
-        return Result.success(books);
+        return Result.success(bookService.classificationQuery(dto));
     }
 }

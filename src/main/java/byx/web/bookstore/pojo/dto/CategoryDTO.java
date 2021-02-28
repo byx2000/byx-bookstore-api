@@ -1,9 +1,9 @@
-package byx.web.bookstore.entity;
+package byx.web.bookstore.pojo.dto;
 
 /**
- * 电子书类型实体类
+ * 传递给客户端的类别信息
  */
-public class Category
+public class CategoryDTO
 {
     private Integer id;
     private String name;
@@ -31,9 +31,6 @@ public class Category
     @Override
     public String toString()
     {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "CategoryDTO{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

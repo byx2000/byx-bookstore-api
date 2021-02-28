@@ -1,4 +1,4 @@
-package byx.web.bookstore.entity;
+package byx.web.bookstore.common;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,12 +8,22 @@ import java.util.List;
  * 封装分页数据
  * @param <T> 列表项数据类型
  */
-public class PageBean<T>
+public class PageInfo<T>
 {
     private int totalCount;
     private int currentPage;
     private int pageSize;
     private List<T> data;
+
+    public PageInfo() {}
+
+    public PageInfo(List<T> data, int pageSize, int currentPage, int totalCount)
+    {
+        this.data = data;
+        this.pageSize = pageSize;
+        this.currentPage = currentPage;
+        this.totalCount = totalCount;
+    }
 
     public int getTotalCount()
     {
@@ -61,7 +71,7 @@ public class PageBean<T>
         this.data = data;
     }
 
-    public List<Integer> getPagePreview()
+    /*public List<Integer> getPagePreview()
     {
         int maxPreviewCount = 5;
         int start = Math.max(1, getCurrentPage() - 2);
@@ -94,7 +104,7 @@ public class PageBean<T>
         Collections.sort(pages);
 
         return pages;
-    }
+    }*/
 
     @Override
     public String toString()

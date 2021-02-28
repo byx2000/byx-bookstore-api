@@ -3,7 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="byx.web.bookstore.mapper.CategoryMapper">
-    <select id="listAll" resultType="Category">
+
+    <select id="listAll" resultType="CategoryPO">
         SELECT id, name FROM categories
     </select>
+
+    <select id="getById" resultType="CategoryPO">
+        SELECT id, name FROM categories WHERE id = #{id}
+    </select>
+
 </mapper>

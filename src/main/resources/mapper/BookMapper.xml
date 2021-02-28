@@ -4,16 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="byx.web.bookstore.mapper.BookMapper">
 
-    <select id="getRecommend" resultType="Book">
-        SELECT * FROM books LIMIT #{count}
+    <select id="listRecommend" resultType="BookPO">
+        SELECT name, author, description, score, heat
+        FROM books
+        ORDER BY RANDOM()
+        LIMIT #{count}
     </select>
 
-    <select id="getRecommendOfCategory" resultType="Book">
-        SELECT * FROM books WHERE categoryId = #{categoryId} LIMIT #{count}
+    <select id="listRecommendByCategoryId" resultType="BookPO">
+        SELECT name, author, description, score, heat
+        FROM books
+        WHERE categoryId = #{categoryId}
+        ORDER BY RANDOM()
+        LIMIT #{count}
     </select>
 
-    <select id="list" resultType="Book">
-        SELECT * FROM books
+    <!--where从句-->
+    <sql id="whereClause">
         <where>
             <if test="categoryId != null">AND categoryId = #{categoryId}</if>
             <if test="scoreRange.min != null">AND score >= #{scoreRange.min}</if>
@@ -22,6 +29,10 @@
             <if test="heatRange.max != null">AND heat &lt;= #{heatRange.max}</if>
             <if test="updateAfter != null">AND (julianday('now') - julianday(updateTime)) &lt;= #{updateAfter}</if>
         </where>
+    </sql>
+
+    <!--order从句-->
+    <sql id="orderClause">
         <if test="orderBy != null">
             ORDER BY
             <choose>
@@ -40,9 +51,26 @@
                 </choose>
             </if>
         </if>
-        <if test="pageSize != null 	&amp;&amp; currentPage != null">
-            LIMIT #{limit} OFFSET #{offset}
+    </sql>
+
+    <!--limit从句-->
+    <sql id="limitClause">
+        <if test="limit != null">
+            LIMIT #{limit}
+            <if test="offset != null">OFFSET #{offset}</if>
         </if>
+    </sql>
+
+    <select id="listClassificationQueryResult" resultType="BookPO">
+        SELECT * FROM books
+        <include refid="whereClause"/>
+        <include refid="orderClause"/>
+        <include refid="limitClause"/>
+    </select>
+
+    <select id="countOfClassificationQueryResult" resultType="int">
+        SELECT COUNT(*) FROM books
+        <include refid="whereClause"/>
     </select>
 
 </mapper>

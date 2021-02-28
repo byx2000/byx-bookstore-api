@@ -1,6 +1,6 @@
 package byx.web.bookstore.mapper;
 
-import byx.web.bookstore.entity.Category;
+import byx.web.bookstore.pojo.po.CategoryPO;
 
 import java.util.List;
 
@@ -12,5 +12,11 @@ public interface CategoryMapper
     /**
      * 获取所有类型
      */
-    List<Category> listAll();
+    List<CategoryPO> listAll();
+
+    /**
+     * 根据id查询类型信息
+     * @param id 类型id
+     */
+    CategoryPO getById(Integer id);
 }

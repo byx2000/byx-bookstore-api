@@ -1,9 +1,11 @@
-package byx.web.bookstore.entity;
+package byx.web.bookstore.pojo.po;
+
+import byx.web.bookstore.pojo.vo.BookItemVO;
 
 /**
- * 电子书实体类
+ * 对应于数据库中的books表
  */
-public class Book
+public class BookPO
 {
     private Integer id;
     private Integer categoryId;
@@ -16,7 +18,6 @@ public class Book
     private Integer dislikeCount;
     private Integer heat;
     private Double score;
-    private String cover;
 
     public Integer getId()
     {
@@ -128,13 +129,21 @@ public class Book
         this.score = score;
     }
 
-    public String getCover()
+    public BookItemVO toBookItemVO()
     {
-        return cover;
+        BookItemVO vo = new BookItemVO();
+        vo.setName(name);
+        vo.setAuthor(author);
+        vo.setDescription(description);
+        vo.setScore(score);
+        vo.setHeat(heat);
+        vo.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + id + ".jpg");
+        return vo;
     }
 
-    public void setCover(String cover)
+    @Override
+    public String toString()
     {
-        this.cover = cover;
+        return "BookPO{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", author='" + author + '\'' + ", description='" + description + '\'' + ", updateTime='" + updateTime + '\'' + ", wordCount=" + wordCount + ", likeCount=" + likeCount + ", dislikeCount=" + dislikeCount + ", heat=" + heat + ", score=" + score + '}';
     }
 }

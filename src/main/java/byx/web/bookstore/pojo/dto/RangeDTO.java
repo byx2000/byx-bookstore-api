@@ -1,9 +1,9 @@
-package byx.web.bookstore.common;
+package byx.web.bookstore.pojo.dto;
 
 /**
  * 范围
  */
-public class Range
+public class RangeDTO
 {
     private Integer min, max;
 
