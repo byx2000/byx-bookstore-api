@@ -4,17 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="byx.web.bookstore.mapper.BookMapper">
 
-    <select id="listRecommend" resultType="BookPO">
+    <select id="listByRecommendQuery" resultType="BookPO">
         SELECT id, name, author, description, score, heat
         FROM books
-        ORDER BY RANDOM()
-        LIMIT #{count}
-    </select>
-
-    <select id="listRecommendByCategoryId" resultType="BookPO">
-        SELECT name, author, description, score, heat
-        FROM books
-        WHERE categoryId = #{categoryId}
+        <if test="categoryId != null">
+            WHERE categoryId = #{categoryId}
+        </if>
         ORDER BY RANDOM()
         LIMIT #{count}
     </select>
@@ -65,7 +60,7 @@
         </if>
     </sql>
 
-    <select id="listClassificationQueryResult" resultType="BookPO">
+    <select id="listByClassificationQuery" resultType="BookPO">
         SELECT id, name, author, description, score, heat
         FROM books
         <include refid="whereClause"/>
@@ -73,13 +68,24 @@
         <include refid="limitClause"/>
     </select>
 
-    <select id="countOfClassificationQueryResult" resultType="int">
+    <select id="countByClassificationQuery" resultType="int">
         SELECT COUNT(*) FROM books
         <include refid="whereClause"/>
     </select>
     
     <select id="listRank" resultType="BookPO">
-
+        SELECT id, name, author, description, score, heat
+        FROM books
+        <if test="categoryId != null">
+            WHERE categoryId = #{categoryId}
+        </if>
+        ORDER BY
+        <choose>
+            <when test="type == 'updateTime'">updateTime DESC</when>
+            <when test="type == 'score'">score DESC</when>
+            <otherwise>heat DESC</otherwise>
+        </choose>
+        LIMIT #{count}
     </select>
 
 </mapper>

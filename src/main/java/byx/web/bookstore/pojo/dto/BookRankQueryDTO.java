@@ -1,8 +1,9 @@
 package byx.web.bookstore.pojo.dto;
 
-public class BookRankListQueryDTO {
+public class BookRankQueryDTO {
     private Integer categoryId;
     private Integer count;
+    private String type;
 
     public Integer getCategoryId() {
         return categoryId;
@@ -18,5 +19,13 @@ public class BookRankListQueryDTO {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

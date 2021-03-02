@@ -23,9 +23,4 @@ public class BookRecommendQueryDTO {
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
-
-    @Override
-    public String toString() {
-        return "BookRecommendQueryDTO{" + "count=" + count + ", categoryId=" + categoryId + '}';
-    }
 }
