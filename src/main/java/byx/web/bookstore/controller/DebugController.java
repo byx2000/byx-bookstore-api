@@ -12,14 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/debug")
-public class DebugController
-{
+public class DebugController {
     @Autowired
     private BookService bookService;
 
     @RequestMapping("")
-    public Result debug()
-    {
+    public Result debug() {
         return Result.fail(Status.UNKNOWN_ERROR);
     }
 }

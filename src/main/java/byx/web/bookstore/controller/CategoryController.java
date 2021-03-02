@@ -9,23 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 电子书类型控制器
+ * @author byx
  */
 @RestController
 @RequestMapping("/category")
-public class CategoryController
-{
+public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
     @RequestMapping("/all")
-    public Result all()
-    {
+    public Result all() {
         return Result.success(categoryService.all());
     }
 
     @RequestMapping("")
-    public Result query(@RequestBody Integer categoryId)
-    {
+    public Result query(@RequestBody Integer categoryId) {
         return Result.success(categoryService.get(categoryId));
     }
 }

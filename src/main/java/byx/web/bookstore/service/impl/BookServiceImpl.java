@@ -12,30 +12,31 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * BookService实现类
+ *
+ * @author byx
+ */
 @Service
-public class BookServiceImpl implements BookService
-{
+public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
 
     @Override
-    public List<BookItemVO> recommend(Integer count)
-    {
+    public List<BookItemVO> recommend(Integer count) {
         List<BookPO> pos = bookMapper.listRecommend(count);
         return pos.stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
     }
 
     @Override
-    public List<BookItemVO> recommendOfCategory(Integer categoryId, Integer count)
-    {
+    public List<BookItemVO> recommendOfCategory(Integer categoryId, Integer count) {
         List<BookPO> pos = bookMapper.listRecommendByCategoryId(categoryId, count);
         return pos.stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
     }
 
     @Override
-    public PageInfo<BookItemVO> classificationQuery(BookClassificationQueryDTO qo)
-    {
-        List<BookItemVO> vos =  bookMapper.listClassificationQueryResult(qo).stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
+    public PageInfo<BookItemVO> classificationQuery(BookClassificationQueryDTO qo) {
+        List<BookItemVO> vos = bookMapper.listClassificationQueryResult(qo).stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
         int count = bookMapper.countOfClassificationQueryResult(qo);
         return new PageInfo<>(vos, qo.getPageSize(), qo.getCurrentPage(), count);
     }

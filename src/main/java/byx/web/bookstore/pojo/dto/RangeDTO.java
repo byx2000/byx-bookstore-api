@@ -2,34 +2,29 @@ package byx.web.bookstore.pojo.dto;
 
 /**
  * 范围
+ * @author byx
  */
-public class RangeDTO
-{
+public class RangeDTO {
     private Integer min, max;
 
-    public Integer getMin()
-    {
+    public Integer getMin() {
         return min;
     }
 
-    public void setMin(Integer min)
-    {
+    public void setMin(Integer min) {
         this.min = min;
     }
 
-    public Integer getMax()
-    {
+    public Integer getMax() {
         return max;
     }
 
-    public void setMax(Integer max)
-    {
+    public void setMax(Integer max) {
         this.max = max;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Range{" + "min=" + min + ", max=" + max + '}';
     }
 }

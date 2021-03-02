@@ -2,35 +2,30 @@ package byx.web.bookstore.pojo.dto;
 
 /**
  * 传递给客户端的类别信息
+ * @author byx
  */
-public class CategoryDTO
-{
+public class CategoryDTO {
     private Integer id;
     private String name;
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "CategoryDTO{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

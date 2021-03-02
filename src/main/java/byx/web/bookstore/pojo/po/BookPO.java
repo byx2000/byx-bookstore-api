@@ -4,9 +4,9 @@ import byx.web.bookstore.pojo.vo.BookItemVO;
 
 /**
  * 对应于数据库中的books表
+ * @author byx
  */
-public class BookPO
-{
+public class BookPO {
     private Integer id;
     private Integer categoryId;
     private String name;
@@ -19,118 +19,95 @@ public class BookPO
     private Integer heat;
     private Double score;
 
-    public Integer getId()
-    {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id)
-    {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getCategoryId()
-    {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId)
-    {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getAuthor()
-    {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author)
-    {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getUpdateTime()
-    {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime)
-    {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 
-    public Integer getWordCount()
-    {
+    public Integer getWordCount() {
         return wordCount;
     }
 
-    public void setWordCount(Integer wordCount)
-    {
+    public void setWordCount(Integer wordCount) {
         this.wordCount = wordCount;
     }
 
-    public Integer getLikeCount()
-    {
+    public Integer getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(Integer likeCount)
-    {
+    public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
     }
 
-    public Integer getDislikeCount()
-    {
+    public Integer getDislikeCount() {
         return dislikeCount;
     }
 
-    public void setDislikeCount(Integer dislikeCount)
-    {
+    public void setDislikeCount(Integer dislikeCount) {
         this.dislikeCount = dislikeCount;
     }
 
-    public Integer getHeat()
-    {
+    public Integer getHeat() {
         return heat;
     }
 
-    public void setHeat(Integer heat)
-    {
+    public void setHeat(Integer heat) {
         this.heat = heat;
     }
 
-    public Double getScore()
-    {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(Double score)
-    {
+    public void setScore(Double score) {
         this.score = score;
     }
 
-    public BookItemVO toBookItemVO()
-    {
+    public BookItemVO toBookItemVO() {
         BookItemVO vo = new BookItemVO();
         vo.setName(name);
         vo.setAuthor(author);
@@ -142,8 +119,7 @@ public class BookPO
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "BookPO{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", author='" + author + '\'' + ", description='" + description + '\'' + ", updateTime='" + updateTime + '\'' + ", wordCount=" + wordCount + ", likeCount=" + likeCount + ", dislikeCount=" + dislikeCount + ", heat=" + heat + ", score=" + score + '}';
     }
 }

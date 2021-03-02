@@ -10,21 +10,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * CategoryService实现类
+ *
+ * @author byx
+ */
 @Service
-public class CategoryServiceImpl implements CategoryService
-{
+public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
     @Override
-    public List<CategoryDTO> all()
-    {
+    public List<CategoryDTO> all() {
         return categoryMapper.listAll().stream().map(CategoryPO::toCategoryDTO).collect(Collectors.toList());
     }
 
     @Override
-    public CategoryDTO get(Integer categoryId)
-    {
+    public CategoryDTO get(Integer categoryId) {
         return categoryMapper.getById(categoryId).toCategoryDTO();
     }
 }

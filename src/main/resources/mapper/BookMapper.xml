@@ -5,7 +5,7 @@
 <mapper namespace="byx.web.bookstore.mapper.BookMapper">
 
     <select id="listRecommend" resultType="BookPO">
-        SELECT name, author, description, score, heat
+        SELECT id, name, author, description, score, heat
         FROM books
         ORDER BY RANDOM()
         LIMIT #{count}
@@ -23,10 +23,14 @@
     <sql id="whereClause">
         <where>
             <if test="categoryId != null">AND categoryId = #{categoryId}</if>
-            <if test="scoreRange.min != null">AND score >= #{scoreRange.min}</if>
-            <if test="scoreRange.max != null">AND score &lt;= #{scoreRange.max}</if>
-            <if test="heatRange.min != null">AND heat >= #{heatRange.min}</if>
-            <if test="heatRange.max != null">AND heat &lt;= #{heatRange.max}</if>
+            <if test="scoreRange != null">
+                <if test="scoreRange.min != null">AND score >= #{scoreRange.min}</if>
+                <if test="scoreRange.max != null">AND score &lt;= #{scoreRange.max}</if>
+            </if>
+            <if test="heatRange != null">
+                <if test="heatRange.min != null">AND heat >= #{heatRange.min}</if>
+                <if test="heatRange.max != null">AND heat &lt;= #{heatRange.max}</if>
+            </if>
             <if test="updateAfter != null">AND (julianday('now') - julianday(updateTime)) &lt;= #{updateAfter}</if>
         </where>
     </sql>
@@ -62,7 +66,8 @@
     </sql>
 
     <select id="listClassificationQueryResult" resultType="BookPO">
-        SELECT * FROM books
+        SELECT id, name, author, description, score, heat
+        FROM books
         <include refid="whereClause"/>
         <include refid="orderClause"/>
         <include refid="limitClause"/>
@@ -71,6 +76,10 @@
     <select id="countOfClassificationQueryResult" resultType="int">
         SELECT COUNT(*) FROM books
         <include refid="whereClause"/>
+    </select>
+    
+    <select id="listRank" resultType="BookPO">
+
     </select>
 
 </mapper>

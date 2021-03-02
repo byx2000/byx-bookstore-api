@@ -16,11 +16,11 @@ import java.util.List;
 
 /**
  * 电子书控制器
+ * @author byx
  */
 @RestController
 @RequestMapping("/book")
-public class BookController
-{
+public class BookController {
     @Autowired
     private BookService bookService;
 
@@ -28,22 +28,23 @@ public class BookController
      * 获取电子书推荐列表
      */
     @PostMapping("/recommend")
-    public Result recommend(@RequestBody BookRecommendQueryDTO dto)
-    {
-        if (dto.getCount() == null) return Result.fail(Status.PARAMETER_MISS("count"));
+    public Result recommend(@RequestBody BookRecommendQueryDTO dto) {
+        if (dto.getCount() == null) {
+            return Result.fail(Status.parameterMiss("count"));
+        }
 
         List<BookItemVO> vos;
-        if (dto.getCategoryId() == null)
+        if (dto.getCategoryId() == null) {
             vos = bookService.recommend(dto.getCount());
-        else
+        } else {
             vos = bookService.recommendOfCategory(dto.getCategoryId(), dto.getCount());
+        }
 
         return Result.success(vos);
     }
 
     @PostMapping("/classification")
-    public Result classificationQuery(@RequestBody BookClassificationQueryDTO dto)
-    {
+    public Result classificationQuery(@RequestBody BookClassificationQueryDTO dto) {
         return Result.success(bookService.classificationQuery(dto));
     }
 }
