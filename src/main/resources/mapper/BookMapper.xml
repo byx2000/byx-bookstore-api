@@ -4,15 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="byx.web.bookstore.mapper.BookMapper">
 
-    <select id="listByRecommendQuery" resultType="BookPO">
-        SELECT id, name, author, description, score, heat
-        FROM books
-        <if test="categoryId != null">
-            WHERE categoryId = #{categoryId}
-        </if>
-        ORDER BY RANDOM()
-        LIMIT #{count}
-    </select>
+    <!--select从句-->
+    <sql id="selectClause">
+        SELECT id, name, author, description, score, heat, updateTime
+    </sql>
 
     <!--where从句-->
     <sql id="whereClause">
@@ -60,8 +55,18 @@
         </if>
     </sql>
 
+    <select id="listByRecommendQuery" resultType="BookPO">
+        <include refid="selectClause"/>
+        FROM books
+        <if test="categoryId != null">
+            WHERE categoryId = #{categoryId}
+        </if>
+        ORDER BY RANDOM()
+        LIMIT #{count}
+    </select>
+
     <select id="listByClassificationQuery" resultType="BookPO">
-        SELECT id, name, author, description, score, heat
+        <include refid="selectClause"/>
         FROM books
         <include refid="whereClause"/>
         <include refid="orderClause"/>
@@ -74,7 +79,7 @@
     </select>
     
     <select id="listRank" resultType="BookPO">
-        SELECT id, name, author, description, score, heat
+        <include refid="selectClause"/>
         FROM books
         <if test="categoryId != null">
             WHERE categoryId = #{categoryId}

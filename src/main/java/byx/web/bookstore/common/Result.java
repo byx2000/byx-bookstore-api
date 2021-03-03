@@ -4,7 +4,7 @@ package byx.web.bookstore.common;
  * Json返回结果
  * @author byx
  */
-public class Result<T> {
+public final class Result<T> {
     private final Status status;
     private final T data;
 
@@ -18,8 +18,8 @@ public class Result<T> {
     /**
      * 获取错误消息
      */
-    public String getMessage() {
-        return status.getMessage();
+    public String getMsg() {
+        return status.getMsg();
     }
 
     /**
@@ -49,6 +49,17 @@ public class Result<T> {
      * @param status 状态
      */
     public static Result<?> fail(Status status) {
-        return new Result<>(status, null);
+        return fail(status, null);
+    }
+
+    /**
+     * 生成失败返回结果，并携带数据
+     *
+     * @param status 状态
+     * @param data 数据
+     * @param <T> data的类型
+     */
+    public static <T> Result<T> fail(Status status, T data) {
+        return new Result<>(status, data);
     }
 }

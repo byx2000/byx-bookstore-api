@@ -10,6 +10,7 @@ public class BookItemVO {
     private String description;
     private Double score;
     private Integer heat;
+    private String updateTime;
     private String cover;
 
     public String getName() {
@@ -60,8 +61,11 @@ public class BookItemVO {
         this.cover = cover;
     }
 
-    @Override
-    public String toString() {
-        return "BookItemVO{" + "name='" + name + '\'' + ", author='" + author + '\'' + ", description='" + description + '\'' + ", score=" + score + ", heat=" + heat + ", cover='" + cover + '\'' + '}';
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

@@ -114,12 +114,8 @@ public class BookPO {
         vo.setDescription(description);
         vo.setScore(score);
         vo.setHeat(heat);
+        vo.setUpdateTime(updateTime);
         vo.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + id + ".jpg");
         return vo;
-    }
-
-    @Override
-    public String toString() {
-        return "BookPO{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", author='" + author + '\'' + ", description='" + description + '\'' + ", updateTime='" + updateTime + '\'' + ", wordCount=" + wordCount + ", likeCount=" + likeCount + ", dislikeCount=" + dislikeCount + ", heat=" + heat + ", score=" + score + '}';
     }
 }
