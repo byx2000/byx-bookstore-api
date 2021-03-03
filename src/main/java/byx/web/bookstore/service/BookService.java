@@ -11,5 +11,5 @@ import java.util.List;
 public interface BookService {
     List<BookItemVO> getRecommend(BookRecommendQueryDTO dto);
     PageInfo<BookItemVO> classificationQuery(BookClassificationQueryDTO dto);
-    List<BookItemVO> rankList(BookRankQueryDTO dto);
+    List<BookItemVO> getRank(BookRankQueryDTO dto);
 }

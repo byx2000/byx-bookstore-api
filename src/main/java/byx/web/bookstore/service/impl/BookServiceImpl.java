@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookItemVO> rankList(BookRankQueryDTO dto) {
+    public List<BookItemVO> getRank(BookRankQueryDTO dto) {
         List<BookPO> pos = bookMapper.listRank(dto);
         return pos.stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
     }
