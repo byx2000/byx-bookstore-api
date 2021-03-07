@@ -1,18 +1,6 @@
 package byx.web.bookstore.pojo.dto;
 
-import javax.validation.constraints.NotNull;
-
-/**
- * 传递电子书分类查询条件的对象
- * @author byx
- */
-public class BookClassificationQueryDTO {
-    @NotNull(message = "pageSize不能为空")
-    private Integer pageSize;
-
-    @NotNull(message = "currentPage不能为空")
-    private Integer currentPage;
-
+public class BookClassificationQueryDTO extends PagingQueryDTO {
     private Integer categoryId;
     private RangeDTO scoreRange;
     private RangeDTO heatRange;
@@ -66,33 +54,5 @@ public class BookClassificationQueryDTO {
 
     public void setOrderType(String orderType) {
         this.orderType = orderType;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public Integer getCurrentPage() {
-        return currentPage;
-    }
-
-    public Integer getLimit() {
-        return isPaging() ? pageSize : null;
-    }
-
-    public Integer getOffset() {
-        return isPaging() ? pageSize * (currentPage - 1) : null;
-    }
-
-    private boolean isPaging() {
-        return pageSize != null && currentPage != null;
     }
 }
