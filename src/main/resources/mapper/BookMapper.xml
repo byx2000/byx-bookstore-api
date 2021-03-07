@@ -12,7 +12,7 @@
     <!--where从句-->
     <sql id="whereClause">
         <where>
-            <if test="categoryId != null">AND categoryId = #{categoryId}</if>
+            <if test="categoryId != null &amp;&amp; categoryId != -1">AND categoryId = #{categoryId}</if>
             <if test="scoreRange != null">
                 <if test="scoreRange.min != null">AND score >= #{scoreRange.min}</if>
                 <if test="scoreRange.max != null">AND score &lt;= #{scoreRange.max}</if>

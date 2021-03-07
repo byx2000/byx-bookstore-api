@@ -7,15 +7,13 @@ import javax.validation.constraints.NotNull;
  * @author byx
  */
 public class BookClassificationQueryDTO {
-    @NotNull(message = "categoryId不能为空")
-    private Integer categoryId;
-
     @NotNull(message = "pageSize不能为空")
     private Integer pageSize;
 
     @NotNull(message = "currentPage不能为空")
     private Integer currentPage;
 
+    private Integer categoryId;
     private RangeDTO scoreRange;
     private RangeDTO heatRange;
     private Integer updateAfter;

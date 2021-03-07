@@ -25,8 +25,9 @@ public class ControllerExceptionAdvice {
         return Result.fail(Status.BAD_REQUEST);
     }
 
-    @ExceptionHandler(SQLException.class)
-    public Result<?> internalException(SQLException e) {
+    @ExceptionHandler(Exception.class)
+    public Result<?> internalException(Exception e) {
+        e.printStackTrace();
         return Result.fail(Status.INTERNAL_ERROR);
     }
 }
