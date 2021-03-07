@@ -2,6 +2,7 @@ package byx.web.bookstore.service;
 
 import byx.web.bookstore.common.PageInfo;
 import byx.web.bookstore.pojo.dto.BookClassificationQueryDTO;
+import byx.web.bookstore.pojo.dto.BookKeywordSearchDTO;
 import byx.web.bookstore.pojo.dto.BookRankQueryDTO;
 import byx.web.bookstore.pojo.dto.BookRecommendQueryDTO;
 import byx.web.bookstore.pojo.vo.BookItemVO;
@@ -12,4 +13,5 @@ public interface BookService {
     List<BookItemVO> getRecommend(BookRecommendQueryDTO dto);
     PageInfo<BookItemVO> classificationQuery(BookClassificationQueryDTO dto);
     List<BookItemVO> getRank(BookRankQueryDTO dto);
+    PageInfo<BookItemVO> keywordSearch(BookKeywordSearchDTO dto);
 }

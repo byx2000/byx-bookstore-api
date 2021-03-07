@@ -3,6 +3,7 @@ package byx.web.bookstore.controller;
 import byx.web.bookstore.common.PageInfo;
 import byx.web.bookstore.common.Result;
 import byx.web.bookstore.pojo.dto.BookClassificationQueryDTO;
+import byx.web.bookstore.pojo.dto.BookKeywordSearchDTO;
 import byx.web.bookstore.pojo.dto.BookRankQueryDTO;
 import byx.web.bookstore.pojo.dto.BookRecommendQueryDTO;
 import byx.web.bookstore.pojo.vo.BookItemVO;
@@ -35,5 +36,10 @@ public class BookController {
     @PostMapping("/rank")
     public Result<List<BookItemVO>> rank(@RequestBody @Validated BookRankQueryDTO dto) {
         return Result.success(bookService.getRank(dto));
+    }
+
+    @PostMapping("/search")
+    public Result<PageInfo<BookItemVO>> keywordSearch(@RequestBody @Validated BookKeywordSearchDTO dto) {
+        return Result.success(bookService.keywordSearch(dto));
     }
 }

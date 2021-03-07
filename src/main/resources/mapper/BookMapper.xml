@@ -77,7 +77,7 @@
         SELECT COUNT(*) FROM books
         <include refid="whereClause"/>
     </select>
-    
+
     <select id="listRank" resultType="BookPO">
         <include refid="selectClause"/>
         FROM books
@@ -91,6 +91,19 @@
             <otherwise>heat DESC</otherwise>
         </choose>
         LIMIT #{count}
+    </select>
+
+    <select id="listByKeywordSearch" resultType="BookPO">
+        <include refid="selectClause"/>
+        FROM books
+        WHERE name LIKE '%${keyword}%' OR author LIKE '%${keyword}%' OR description LIKE '%${keyword}%'
+        <include refid="orderClause"/>
+        <include refid="limitClause"/>
+    </select>
+
+    <select id="countByKeywordSearch" resultType="int">
+        SELECT COUNT(*) FROM books
+        WHERE name LIKE '%${keyword}%' OR author LIKE '%${keyword}%' OR description LIKE '%${keyword}%'
     </select>
 
 </mapper>

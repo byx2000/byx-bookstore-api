@@ -3,6 +3,7 @@ package byx.web.bookstore.service.impl;
 import byx.web.bookstore.common.PageInfo;
 import byx.web.bookstore.mapper.BookMapper;
 import byx.web.bookstore.pojo.dto.BookClassificationQueryDTO;
+import byx.web.bookstore.pojo.dto.BookKeywordSearchDTO;
 import byx.web.bookstore.pojo.dto.BookRankQueryDTO;
 import byx.web.bookstore.pojo.dto.BookRecommendQueryDTO;
 import byx.web.bookstore.pojo.po.BookPO;
@@ -36,5 +37,12 @@ public class BookServiceImpl implements BookService {
     public List<BookItemVO> getRank(BookRankQueryDTO dto) {
         List<BookPO> pos = bookMapper.listRank(dto);
         return pos.stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
+    }
+
+    @Override
+    public PageInfo<BookItemVO> keywordSearch(BookKeywordSearchDTO dto) {
+        List<BookItemVO> vos = bookMapper.listByKeywordSearch(dto).stream().map(BookPO::toBookItemVO).collect(Collectors.toList());
+        int count = bookMapper.countByKeywordSearch(dto);
+        return new PageInfo<>(vos, dto.getPageSize(), dto.getCurrentPage(), count);
     }
 }
