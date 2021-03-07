@@ -109,6 +109,7 @@ public class BookPO {
 
     public BookItemVO toBookItemVO() {
         BookItemVO vo = new BookItemVO();
+        vo.setId(id);
         vo.setName(name);
         vo.setAuthor(author);
         vo.setDescription(description);

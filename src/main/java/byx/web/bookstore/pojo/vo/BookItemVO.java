@@ -5,6 +5,7 @@ package byx.web.bookstore.pojo.vo;
  * @author byx
  */
 public class BookItemVO {
+    private Integer id;
     private String name;
     private String author;
     private String description;
@@ -12,6 +13,14 @@ public class BookItemVO {
     private Integer heat;
     private String updateTime;
     private String cover;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
