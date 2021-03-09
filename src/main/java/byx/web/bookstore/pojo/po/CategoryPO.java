@@ -3,7 +3,8 @@ package byx.web.bookstore.pojo.po;
 import byx.web.bookstore.pojo.dto.CategoryDTO;
 
 /**
- * 对应于数据库中的categories表
+ * category表对应的实体类
+ *
  * @author byx
  */
 public class CategoryPO {
@@ -31,10 +32,5 @@ public class CategoryPO {
         dto.setId(id);
         dto.setName(name);
         return dto;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

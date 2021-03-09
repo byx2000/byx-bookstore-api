@@ -3,7 +3,8 @@ package byx.web.bookstore.pojo.po;
 import byx.web.bookstore.pojo.vo.BookItemVO;
 
 /**
- * 对应于数据库中的books表
+ * book表对应的实体类
+ *
  * @author byx
  */
 public class BookPO {

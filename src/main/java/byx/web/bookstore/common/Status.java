@@ -4,7 +4,8 @@ public enum Status {
     SUCCESS(1001, "操作成功完成"),
     PARAMETER_ERROR(1002, "参数错误"),
     BAD_REQUEST(1003, "请求格式不正确"),
-    INTERNAL_ERROR(1004, "服务器内部错误");
+    INTERNAL_ERROR(1004, "服务器内部错误"),
+    INCORRECT_USERNAME_OR_PASSWORD(1005, "用户名或密码错误");
 
     private final int code;
     private final String msg;
