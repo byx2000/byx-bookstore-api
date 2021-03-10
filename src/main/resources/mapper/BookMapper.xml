@@ -106,4 +106,10 @@
         WHERE name LIKE '%${keyword}%' OR author LIKE '%${keyword}%' OR description LIKE '%${keyword}%'
     </select>
 
+    <select id="getById" resultType="BookPO">
+        <include refid="selectClause"/>
+        FROM books
+        WHERE id = #{bookId}
+    </select>
+
 </mapper>

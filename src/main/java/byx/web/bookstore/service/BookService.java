@@ -14,4 +14,5 @@ public interface BookService {
     PageInfo<BookItemVO> classificationQuery(BookClassificationQueryDTO dto);
     List<BookItemVO> getRank(BookRankQueryDTO dto);
     PageInfo<BookItemVO> keywordSearch(BookKeywordSearchDTO dto);
+    BookItemVO getBookDetail(Integer bookId);
 }

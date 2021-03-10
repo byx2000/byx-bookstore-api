@@ -15,4 +15,5 @@ public interface BookMapper {
     List<BookPO> listRank(BookRankQueryDTO dto);
     List<BookPO> listByKeywordSearch(BookKeywordSearchDTO dto);
     int countByKeywordSearch(BookKeywordSearchDTO dto);
+    BookPO getById(Integer bookId);
 }

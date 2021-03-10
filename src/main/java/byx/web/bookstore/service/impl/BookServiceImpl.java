@@ -45,4 +45,9 @@ public class BookServiceImpl implements BookService {
         int count = bookMapper.countByKeywordSearch(dto);
         return new PageInfo<>(vos, dto.getPageSize(), dto.getCurrentPage(), count);
     }
+
+    @Override
+    public BookItemVO getBookDetail(Integer bookId) {
+        return bookMapper.getById(bookId).toBookItemVO();
+    }
 }

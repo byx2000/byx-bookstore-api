@@ -26,6 +26,7 @@ public class ControllerExceptionAdvice {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public Result<?> requestException(HttpMessageNotReadableException e) {
+        e.printStackTrace();
         return Result.fail(Status.BAD_REQUEST);
     }
 
