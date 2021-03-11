@@ -119,6 +119,7 @@ public class BookPO {
         vo.setUpdateTime(updateTime);
         vo.setLikeCount(likeCount);
         vo.setDislikeCount(dislikeCount);
+        vo.setWordCount(wordCount);
         vo.setCover("http://182.92.74.74:8888/byx-bookstore-api/upload/cover/" + id + ".jpg");
         return vo;
     }

@@ -6,7 +6,7 @@
 
     <!--select从句-->
     <sql id="selectClause">
-        SELECT id, name, author, description, score, heat, updateTime, likeCount, dislikeCount
+        SELECT id, name, author, description, score, heat, updateTime, likeCount, dislikeCount, wordCount
     </sql>
 
     <!--where从句-->

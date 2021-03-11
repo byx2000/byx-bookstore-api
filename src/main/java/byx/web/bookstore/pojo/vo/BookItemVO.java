@@ -15,6 +15,7 @@ public class BookItemVO {
     private String cover;
     private Integer likeCount;
     private Integer dislikeCount;
+    private Integer wordCount;
 
     public Integer getId() {
         return id;
@@ -94,5 +95,13 @@ public class BookItemVO {
 
     public void setDislikeCount(Integer dislikeCount) {
         this.dislikeCount = dislikeCount;
+    }
+
+    public Integer getWordCount() {
+        return wordCount;
+    }
+
+    public void setWordCount(Integer wordCount) {
+        this.wordCount = wordCount;
     }
 }
