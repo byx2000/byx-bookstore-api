@@ -13,6 +13,8 @@ public class BookItemVO {
     private Integer heat;
     private String updateTime;
     private String cover;
+    private Integer likeCount;
+    private Integer dislikeCount;
 
     public Integer getId() {
         return id;
@@ -76,5 +78,21 @@ public class BookItemVO {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public Integer getDislikeCount() {
+        return dislikeCount;
+    }
+
+    public void setDislikeCount(Integer dislikeCount) {
+        this.dislikeCount = dislikeCount;
     }
 }
