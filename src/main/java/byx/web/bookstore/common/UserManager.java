@@ -23,4 +23,8 @@ public class UserManager {
     public UserVO getCurrentUser() {
         return (UserVO) httpSession.getAttribute("currentUser");
     }
+
+    public void logout() {
+        httpSession.invalidate();
+    }
 }

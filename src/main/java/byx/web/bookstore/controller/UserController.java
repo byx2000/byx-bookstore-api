@@ -39,4 +39,14 @@ public class UserController {
         }
         return Result.success(currentUser);
     }
+
+    @PostMapping("/logout")
+    public Result<?> logout() {
+        UserVO currentUser = userManager.getCurrentUser();
+        if (currentUser == null) {
+            return Result.fail(Status.NOT_LOGGED_IN);
+        }
+        userManager.logout();
+        return Result.success("注销成功");
+    }
 }
