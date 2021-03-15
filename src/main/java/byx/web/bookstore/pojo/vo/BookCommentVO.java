@@ -5,7 +5,7 @@ package byx.web.bookstore.pojo.vo;
  *
  * @author byx
  */
-public class CommentVO {
+public class BookCommentVO {
     private String content;
     private String time;
     private String username;

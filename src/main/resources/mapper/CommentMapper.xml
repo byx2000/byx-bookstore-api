@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="byx.web.bookstore.mapper.CommentMapper">
 
-    <select id="listOfBook" resultType="CommentVO">
+    <select id="listOfBook" resultType="BookCommentVO">
         SELECT content, time, username, userId
         FROM comments c JOIN users u ON c.userId = u.id
         WHERE c.bookId = #{bookId}
@@ -20,6 +20,28 @@
         SELECT COUNT(*)
         FROM comments c JOIN users u ON c.userId = u.id
         WHERE c.bookId = #{bookId}
+    </select>
+
+    <select id="listOfUser" resultType="UserCommentVO">
+        SELECT userId, c.id AS commentId, content, time, name AS bookName
+        FROM comments c JOIN users u ON c.userId = u.id JOIN books b ON c.bookId = b.id
+        WHERE c.userId = #{userId}
+        AND b.name LIKE '%${bookKeyword}%'
+        AND content LIKE '%${commentKeyword}%'
+        ORDER BY time
+        <choose>
+            <when test="orderType == 'asc'">ASC</when>
+            <otherwise>DESC</otherwise>
+        </choose>
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="countOfUser" resultType="int">
+        SELECT COUNT(*)
+        FROM comments c JOIN users u ON c.userId = u.id JOIN books b ON c.bookId = b.id
+        WHERE c.userId = #{userId}
+        AND b.name LIKE '%${bookKeyword}%'
+        AND content LIKE '%${commentKeyword}%'
     </select>
 
 </mapper>
