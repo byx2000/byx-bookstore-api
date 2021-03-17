@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="byx.web.bookstore.mapper.FavoriteMapper">
+    <select id="listByUser" resultType="FavoriteVO">
+        SELECT b.id AS bookId,
+        b.name AS bookName,
+        b.author AS bookAuthor,
+        b.description AS bookDescription,
+        f.time AS time
+        FROM favorites f JOIN books b ON f.bookId = b.id
+        WHERE f.userId = #{userId}
+        AND b.name LIKE '%${bookKeyword}%'
+        AND b.author LIKE '%${authorKeyword}%'
+        ORDER BY f.time
+        <choose>
+            <when test="orderType == 'asc'">ASC</when>
+            <otherwise>DESC</otherwise>
+        </choose>
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+    <select id="countOfUser" resultType="int">
+        SELECT COUNT(*),
+        b.name AS bookName,
+        b.author AS bookAuthor,
+        b.description AS bookDescription,
+        f.time AS time
+        FROM favorites f JOIN books b ON f.bookId = b.id
+        WHERE f.userId = #{userId}
+        AND b.name LIKE '%${bookKeyword}%'
+        AND b.author LIKE '%${authorKeyword}%'
+    </select>
+</mapper>
