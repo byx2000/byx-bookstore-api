@@ -23,7 +23,7 @@
     </select>
 
     <select id="listOfUser" resultType="UserCommentVO">
-        SELECT userId, c.id AS commentId, content, time, name AS bookName
+        SELECT userId, c.id AS commentId, content, time, name AS bookName, b.id AS bookId
         FROM comments c JOIN users u ON c.userId = u.id JOIN books b ON c.bookId = b.id
         WHERE c.userId = #{userId}
         AND b.name LIKE '%${bookKeyword}%'

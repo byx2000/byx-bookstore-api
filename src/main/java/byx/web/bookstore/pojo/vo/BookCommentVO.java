@@ -6,10 +6,19 @@ package byx.web.bookstore.pojo.vo;
  * @author byx
  */
 public class BookCommentVO {
+    private Integer bookId;
     private String content;
     private String time;
     private String username;
     private Integer userId;
+
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
 
     public String getContent() {
         return content;
