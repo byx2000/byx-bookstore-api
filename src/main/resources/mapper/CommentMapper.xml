@@ -44,4 +44,9 @@
         AND content LIKE '%${commentKeyword}%'
     </select>
 
+    <insert id="insert">
+        INSERT INTO comments (bookId, userId, content, time)
+        VALUES (#{bookId}, #{userId}, #{content}, #{time})
+    </insert>
+
 </mapper>

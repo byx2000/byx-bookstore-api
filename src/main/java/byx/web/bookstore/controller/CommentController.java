@@ -6,6 +6,7 @@ import byx.web.bookstore.common.Status;
 import byx.web.bookstore.common.UserManager;
 import byx.web.bookstore.pojo.dto.CommentOfBookQueryDTO;
 import byx.web.bookstore.pojo.dto.CommentOfUserQueryDTO;
+import byx.web.bookstore.pojo.dto.CommentPublishDTO;
 import byx.web.bookstore.pojo.vo.BookCommentVO;
 import byx.web.bookstore.pojo.vo.UserCommentVO;
 import byx.web.bookstore.pojo.vo.UserVO;
@@ -39,5 +40,16 @@ public class CommentController {
         }
         dto.setUserId(user.getId());
         return Result.success(commentService.getCommentsOfUser(dto));
+    }
+
+    @PostMapping("/publish")
+    public Result<?> publish(@RequestBody @Validated CommentPublishDTO dto) {
+        UserVO user = userManager.getCurrentUser();
+        if (user == null) {
+            return Result.fail(Status.NOT_LOGGED_IN);
+        }
+        dto.setUserId(user.getId());
+        commentService.publish(dto);
+        return Result.success();
     }
 }

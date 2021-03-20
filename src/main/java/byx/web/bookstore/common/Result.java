@@ -43,6 +43,10 @@ public final class Result<T> {
         return new Result<>(Status.SUCCESS, data);
     }
 
+    public static Result<?> success() {
+        return success(null);
+    }
+
     /**
      * 生成失败返回结果
      *
