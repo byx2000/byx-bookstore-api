@@ -19,6 +19,7 @@
         </choose>
         LIMIT #{limit} OFFSET #{offset}
     </select>
+
     <select id="countOfUser" resultType="int">
         SELECT COUNT(*),
         b.name AS bookName,
@@ -30,4 +31,11 @@
         AND b.name LIKE '%${bookKeyword}%'
         AND b.author LIKE '%${authorKeyword}%'
     </select>
+
+    <select id="countOfUserAndBook" resultType="int">
+        SELECT COUNT(*)
+        FROM favorites
+        WHERE userId = #{userId} AND bookId = #{bookId}
+    </select>
+
 </mapper>

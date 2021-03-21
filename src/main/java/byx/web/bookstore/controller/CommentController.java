@@ -8,7 +8,6 @@ import byx.web.bookstore.pojo.dto.CommentOfBookQueryDTO;
 import byx.web.bookstore.pojo.dto.CommentOfUserQueryDTO;
 import byx.web.bookstore.pojo.dto.CommentPublishDTO;
 import byx.web.bookstore.pojo.vo.BookCommentVO;
-import byx.web.bookstore.pojo.vo.UserCommentVO;
 import byx.web.bookstore.pojo.vo.UserVO;
 import byx.web.bookstore.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
