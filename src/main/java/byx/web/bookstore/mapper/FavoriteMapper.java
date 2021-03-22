@@ -11,4 +11,5 @@ public interface FavoriteMapper {
     int countOfUser(UserFavoriteQueryDTO dto);
     int countOfUserAndBook(FavoriteBookDTO dto);
     void insert(FavoriteBookDTO dto);
+    void delete(FavoriteBookDTO dto);
 }

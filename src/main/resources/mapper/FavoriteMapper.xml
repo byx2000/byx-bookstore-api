@@ -43,4 +43,9 @@
         VALUES (#{userId}, #{bookId}, #{time})
     </insert>
 
+    <delete id="delete">
+        DELETE FROM favorites
+        WHERE userId = #{userId} AND bookId = #{bookId}
+    </delete>
+
 </mapper>

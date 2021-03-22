@@ -34,4 +34,9 @@ public class FavoriteServiceImpl implements FavoriteService {
             favoriteMapper.insert(dto);
         }
     }
+
+    @Override
+    public void cancelFavorite(FavoriteBookDTO dto) {
+        favoriteMapper.delete(dto);
+    }
 }

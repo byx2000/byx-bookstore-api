@@ -9,4 +9,5 @@ public interface FavoriteService {
     PageInfo<FavoriteVO> getUserFavorites(UserFavoriteQueryDTO dto);
     boolean isFavorite(FavoriteBookDTO dto);
     void addFavorite(FavoriteBookDTO dto);
+    void cancelFavorite(FavoriteBookDTO dto);
 }

@@ -49,4 +49,13 @@ public class FavoriteController {
         favoriteService.addFavorite(dto);
         return Result.success();
     }
+
+    @PostMapping("/cancel")
+    public Result<?> cancelFavorite(@RequestBody @NotNull(message = "bookId不能为空") Integer bookId) {
+        FavoriteBookDTO dto = new FavoriteBookDTO();
+        dto.setUserId(userManager.getCurrentUser().getId());
+        dto.setBookId(bookId);
+        favoriteService.cancelFavorite(dto);
+        return Result.success();
+    }
 }
