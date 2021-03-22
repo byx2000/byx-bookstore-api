@@ -27,4 +27,11 @@ public class FavoriteServiceImpl implements FavoriteService {
     public boolean isFavorite(FavoriteBookDTO dto) {
         return favoriteMapper.countOfUserAndBook(dto) > 0;
     }
+
+    @Override
+    public void addFavorite(FavoriteBookDTO dto) {
+        if (favoriteMapper.countOfUserAndBook(dto) == 0) {
+            favoriteMapper.insert(dto);
+        }
+    }
 }

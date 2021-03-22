@@ -38,4 +38,9 @@
         WHERE userId = #{userId} AND bookId = #{bookId}
     </select>
 
+    <insert id="insert">
+        INSERT INTO favorites (userId, bookId, time)
+        VALUES (#{userId}, #{bookId}, #{time})
+    </insert>
+
 </mapper>

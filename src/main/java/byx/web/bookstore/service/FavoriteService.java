@@ -8,4 +8,5 @@ import byx.web.bookstore.pojo.vo.FavoriteVO;
 public interface FavoriteService {
     PageInfo<FavoriteVO> getUserFavorites(UserFavoriteQueryDTO dto);
     boolean isFavorite(FavoriteBookDTO dto);
+    void addFavorite(FavoriteBookDTO dto);
 }

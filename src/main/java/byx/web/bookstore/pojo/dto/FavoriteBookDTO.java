@@ -3,6 +3,7 @@ package byx.web.bookstore.pojo.dto;
 public class FavoriteBookDTO {
     private Integer userId;
     private Integer bookId;
+    private String time;
 
     public Integer getUserId() {
         return userId;
@@ -18,5 +19,13 @@ public class FavoriteBookDTO {
 
     public void setBookId(Integer bookId) {
         this.bookId = bookId;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

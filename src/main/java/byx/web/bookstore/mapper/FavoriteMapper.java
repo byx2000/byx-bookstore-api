@@ -10,4 +10,5 @@ public interface FavoriteMapper {
     List<FavoriteVO> listByUser(UserFavoriteQueryDTO dto);
     int countOfUser(UserFavoriteQueryDTO dto);
     int countOfUserAndBook(FavoriteBookDTO dto);
+    void insert(FavoriteBookDTO dto);
 }
