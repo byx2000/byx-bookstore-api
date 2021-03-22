@@ -2,13 +2,11 @@ package byx.web.bookstore.controller;
 
 import byx.web.bookstore.common.PageInfo;
 import byx.web.bookstore.common.Result;
-import byx.web.bookstore.common.Status;
 import byx.web.bookstore.common.UserManager;
 import byx.web.bookstore.pojo.dto.CommentOfBookQueryDTO;
 import byx.web.bookstore.pojo.dto.CommentOfUserQueryDTO;
 import byx.web.bookstore.pojo.dto.CommentPublishDTO;
 import byx.web.bookstore.pojo.vo.BookCommentVO;
-import byx.web.bookstore.pojo.vo.UserVO;
 import byx.web.bookstore.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -33,21 +31,13 @@ public class CommentController {
 
     @PostMapping("/list-of-user")
     public Result<?> listOfUser(@RequestBody @Validated CommentOfUserQueryDTO dto) {
-        UserVO user = userManager.getCurrentUser();
-        if (user == null) {
-            return Result.fail(Status.NOT_LOGGED_IN);
-        }
-        dto.setUserId(user.getId());
+        dto.setUserId(userManager.getCurrentUser().getId());
         return Result.success(commentService.getCommentsOfUser(dto));
     }
 
     @PostMapping("/publish")
     public Result<?> publish(@RequestBody @Validated CommentPublishDTO dto) {
-        UserVO user = userManager.getCurrentUser();
-        if (user == null) {
-            return Result.fail(Status.NOT_LOGGED_IN);
-        }
-        dto.setUserId(user.getId());
+        dto.setUserId(userManager.getCurrentUser().getId());
         commentService.publish(dto);
         return Result.success();
     }

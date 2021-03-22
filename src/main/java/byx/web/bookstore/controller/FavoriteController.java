@@ -1,11 +1,9 @@
 package byx.web.bookstore.controller;
 
 import byx.web.bookstore.common.Result;
-import byx.web.bookstore.common.Status;
 import byx.web.bookstore.common.UserManager;
 import byx.web.bookstore.pojo.dto.FavoriteBookDTO;
 import byx.web.bookstore.pojo.dto.UserFavoriteQueryDTO;
-import byx.web.bookstore.pojo.vo.UserVO;
 import byx.web.bookstore.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -26,22 +24,14 @@ public class FavoriteController {
 
     @RequestMapping("/query")
     public Result<?> query(@RequestBody @Validated UserFavoriteQueryDTO dto) {
-        UserVO user = userManager.getCurrentUser();
-        if (user == null) {
-            return Result.fail(Status.NOT_LOGGED_IN);
-        }
-        dto.setUserId(user.getId());
+        dto.setUserId(userManager.getCurrentUser().getId());
         return Result.success(favoriteService.getUserFavorites(dto));
     }
 
     @RequestMapping("is-favorite")
     public Result<?> isFavorite(@RequestBody @NotNull(message = "bookId不能为空") Integer bookId) {
-        UserVO user = userManager.getCurrentUser();
-        if (user == null) {
-            return Result.fail(Status.NOT_LOGGED_IN);
-        }
         FavoriteBookDTO dto = new FavoriteBookDTO();
-        dto.setUserId(user.getId());
+        dto.setUserId(userManager.getCurrentUser().getId());
         dto.setBookId(bookId);
         return Result.success(favoriteService.isFavorite(dto));
     }
