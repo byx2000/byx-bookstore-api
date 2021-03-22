@@ -1,11 +1,11 @@
-package byx.web.bookstore.web;
+package byx.web.bookstore.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 允许跨域请求
+ * 配置跨域请求
  *
  * @author byx
  */
