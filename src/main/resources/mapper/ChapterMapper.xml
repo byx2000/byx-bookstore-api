@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="byx.web.bookstore.mapper.ChapterMapper">
+
+    <select id="get" resultType="ChapterVO">
+        SELECT c.content AS content, c.name AS chapterName, b.name AS bookName
+        FROM chapters c JOIN books b
+        ON c.bookId = b.id
+        WHERE c.bookId = #{bookId} AND c.chapter = #{chapter}
+    </select>
+
+</mapper>

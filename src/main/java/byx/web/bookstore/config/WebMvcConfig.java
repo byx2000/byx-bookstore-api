@@ -40,6 +40,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/user/current",
                         "/user/logout",
                         "/favorite/add",
-                        "/favorite/cancel");
+                        "/favorite/cancel",
+                        "/chapter/query");
     }
 }
