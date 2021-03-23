@@ -13,3 +13,8 @@ ByxBookstore是一个电子书在线浏览网站，包括用户登陆、用户�
 前端项目地址：[byx-bookstore-app](https://github.com/byx2000/byx-bookstore-app)
 
 体验地址：[http://182.92.74.74/byx-bookstore-app](http://182.92.74.74/byx-bookstore-app)
+
+体验账号：
+
+* 用户名：aaa
+* 密码：123
