@@ -10,4 +10,10 @@
         WHERE c.bookId = #{bookId} AND c.chapter = #{chapter}
     </select>
 
+    <select id="listContents" resultType="ContentItemVO">
+        SELECT chapter, name AS chapterName
+        FROM chapters
+        WHERE bookId = #{bookId}
+    </select>
+
 </mapper>
