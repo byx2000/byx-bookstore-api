@@ -4,14 +4,17 @@ import byx.web.bookstore.common.Result;
 import byx.web.bookstore.common.Status;
 import byx.web.bookstore.common.UserManager;
 import byx.web.bookstore.pojo.dto.LoginDTO;
+import byx.web.bookstore.pojo.dto.RegisterRequestDTO;
 import byx.web.bookstore.pojo.dto.UserRegisterDTO;
 import byx.web.bookstore.pojo.vo.UserVO;
 import byx.web.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.system.ApplicationHome;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -48,25 +51,21 @@ public class UserController {
     }
 
     @PostMapping("register")
-    public Result<?> register(String username, String nickname, String password, MultipartFile avatar) {
-        System.out.println(username);
-        System.out.println(nickname);
-        System.out.println(password);
-        System.out.println(avatar.getSize());
+    public Result<?> register(@Validated RegisterRequestDTO dto) {
         File staticResourcePath = new File(new ApplicationHome().getDir(), "static");
         File uploadPath = new File(staticResourcePath, "upload/avatar");
         System.out.println(uploadPath.getPath());
 
-        UserRegisterDTO dto = new UserRegisterDTO();
-        dto.setUsername(username);
-        dto.setNickname(nickname);
-        dto.setPassword(password);
+        UserRegisterDTO dto2 = new UserRegisterDTO();
+        dto2.setUsername(dto.getUsername());
+        dto2.setNickname(dto.getNickname());
+        dto2.setPassword(dto.getPassword());
 
         int newId = -1;
 
         try {
-            newId = userService.register(dto);
-            avatar.transferTo(new File(uploadPath, newId + ".jpg"));
+            newId = userService.register(dto2);
+            dto.getAvatar().transferTo(new File(uploadPath, newId + ".jpg"));
             return Result.success();
         } catch (IOException e) {
             if (newId != -1) {
