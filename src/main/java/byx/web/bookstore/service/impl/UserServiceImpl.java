@@ -4,6 +4,7 @@ import byx.web.bookstore.common.Status;
 import byx.web.bookstore.exception.BizException;
 import byx.web.bookstore.mapper.UserMapper;
 import byx.web.bookstore.pojo.dto.LoginDTO;
+import byx.web.bookstore.pojo.dto.UserRegisterDTO;
 import byx.web.bookstore.pojo.po.UserPO;
 import byx.web.bookstore.pojo.vo.UserVO;
 import byx.web.bookstore.service.UserService;
@@ -23,5 +24,19 @@ public class UserServiceImpl implements UserService {
             throw new BizException(Status.INCORRECT_USERNAME_OR_PASSWORD, dto);
         }
         return po.toUserVO();
+    }
+
+    @Override
+    public int register(UserRegisterDTO dto) {
+        if (userMapper.countByUsername(dto.getUsername()) > 0) {
+            throw new BizException(Status.USER_EXIST, dto.getUsername());
+        }
+        userMapper.insert(dto);
+        return dto.getId();
+    }
+
+    @Override
+    public void delete(Integer userId) {
+        userMapper.deleteById(userId);
     }
 }
