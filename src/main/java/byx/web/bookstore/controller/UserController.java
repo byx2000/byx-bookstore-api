@@ -52,6 +52,12 @@ public class UserController {
 
     @PostMapping("register")
     public Result<?> register(@Validated RegisterRequestDTO dto) {
+        String checkCode = (String) session.getAttribute("checkCode");
+        if (checkCode == null || !checkCode.equalsIgnoreCase(dto.getCheckCode())) {
+            return Result.fail(Status.CHECK_CODE_ERROR, "验证码错误");
+        }
+        session.removeAttribute("checkCode");
+
         File staticResourcePath = new File(new ApplicationHome().getDir(), "static");
         File uploadPath = new File(staticResourcePath, "upload/avatar");
         System.out.println(uploadPath.getPath());
