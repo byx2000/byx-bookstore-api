@@ -43,6 +43,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/favorite/cancel",
                         "/chapter/query",
                         "/chapter/contents",
-                        "/evaluate/is-like");
+                        "/evaluate/is-like",
+                        "/evaluate/is-dislike");
     }
 }

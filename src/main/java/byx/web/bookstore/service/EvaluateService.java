@@ -1,5 +1,8 @@
 package byx.web.bookstore.service;
 
+import byx.web.bookstore.pojo.dto.EvaluateDTO;
+
 public interface EvaluateService {
-    boolean isLike(Integer userId, Integer bookId);
+    boolean isLike(EvaluateDTO dto);
+    boolean isDislike(EvaluateDTO dto);
 }

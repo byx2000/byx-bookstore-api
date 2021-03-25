@@ -11,4 +11,12 @@
         AND state = 0
     </select>
 
+    <select id="countOfDislike" resultType="int">
+        SELECT COUNT(*)
+        FROM evaluates
+        WHERE userId = #{userId}
+        AND bookId = #{bookId}
+        AND state = 1
+    </select>
+
 </mapper>
