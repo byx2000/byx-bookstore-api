@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="byx.web.bookstore.mapper.EvaluateMapper">
+
+    <select id="countOfLike" resultType="int">
+        SELECT COUNT(*)
+        FROM evaluates
+        WHERE userId = #{userId}
+        AND bookId = #{bookId}
+        AND state = 0
+    </select>
+
+</mapper>
