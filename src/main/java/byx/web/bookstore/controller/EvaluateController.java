@@ -61,4 +61,13 @@ public class EvaluateController {
         evaluateService.cancelLike(dto);
         return Result.success();
     }
+
+    @PostMapping("/cancel-dislike")
+    public Result<?> cancelDislike(@RequestBody Integer bookId) {
+        EvaluateDTO dto = new EvaluateDTO();
+        dto.setUserId(userManager.getCurrentUser().getId());
+        dto.setBookId(bookId);
+        evaluateService.cancelDislike(dto);
+        return Result.success();
+    }
 }

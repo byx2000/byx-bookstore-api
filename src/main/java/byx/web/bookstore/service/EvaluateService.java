@@ -8,4 +8,5 @@ public interface EvaluateService {
     void like(EvaluateDTO dto);
     void dislike(EvaluateDTO dto);
     void cancelLike(EvaluateDTO dto);
+    void cancelDislike(EvaluateDTO dto);
 }

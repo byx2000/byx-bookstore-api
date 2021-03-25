@@ -59,6 +59,15 @@ public class EvaluateServiceImpl implements EvaluateService {
     public void cancelLike(EvaluateDTO dto) {
         if (evaluateMapper.countOfLike(dto) > 0) {
             evaluateMapper.delete(dto, 0);
+            bookMapper.decreaseLikeCount(dto.getBookId());
+        }
+    }
+
+    @Override
+    public void cancelDislike(EvaluateDTO dto) {
+        if (evaluateMapper.countOfDislike(dto) > 0) {
+            evaluateMapper.delete(dto, 1);
+            bookMapper.decreaseDislikeCount(dto.getBookId());
         }
     }
 }
