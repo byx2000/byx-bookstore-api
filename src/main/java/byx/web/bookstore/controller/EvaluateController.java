@@ -27,11 +27,20 @@ public class EvaluateController {
         return Result.success(evaluateService.isLike(dto));
     }
 
-    @PostMapping("is-dislike")
+    @PostMapping("/is-dislike")
     public Result<Boolean> isDislike(@RequestBody Integer bookId) {
         EvaluateDTO dto = new EvaluateDTO();
         dto.setUserId(userManager.getCurrentUser().getId());
         dto.setBookId(bookId);
         return Result.success(evaluateService.isDislike(dto));
+    }
+
+    @PostMapping("/like")
+    public Result<?> like(@RequestBody Integer bookId) {
+        EvaluateDTO dto = new EvaluateDTO();
+        dto.setUserId(userManager.getCurrentUser().getId());
+        dto.setBookId(bookId);
+        evaluateService.like(dto);
+        return Result.success();
     }
 }

@@ -3,6 +3,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="byx.web.bookstore.mapper.EvaluateMapper">
 
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM evaluates
+        WHERE userId = #{userId}
+        AND bookId = #{bookId}
+    </select>
+
     <select id="countOfLike" resultType="int">
         SELECT COUNT(*)
         FROM evaluates
@@ -18,5 +25,17 @@
         AND bookId = #{bookId}
         AND state = 1
     </select>
+
+    <insert id="insert">
+        INSERT INTO evaluates (bookId, userId, state)
+        VALUES (#{dto.bookId}, #{dto.userId}, #{state})
+    </insert>
+
+    <update id="update">
+        UPDATE evaluates
+        SET state = #{state}
+        WHERE userId = #{dto.userId}
+        AND bookId = #{dto.bookId}
+    </update>
 
 </mapper>

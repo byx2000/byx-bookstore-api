@@ -112,4 +112,28 @@
         WHERE id = #{bookId}
     </select>
 
+    <update id="increaseLikeCount">
+        UPDATE books
+        SET likeCount = likeCount + 1
+        WHERE id = #{bookId}
+    </update>
+
+    <update id="decreaseLikeCount">
+        UPDATE books
+        SET likeCount = likeCount - 1
+        WHERE id = #{bookId}
+    </update>
+
+    <update id="increaseDislikeCount">
+        UPDATE books
+        SET dislikeCount = dislikeCount + 1
+        WHERE id = #{bookId}
+    </update>
+
+    <update id="decreaseDislikeCount">
+        UPDATE books
+        SET dislikeCount = dislikeCount - 1
+        WHERE id = #{bookId}
+    </update>
+
 </mapper>

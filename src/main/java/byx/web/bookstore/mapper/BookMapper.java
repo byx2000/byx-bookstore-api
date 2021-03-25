@@ -16,4 +16,8 @@ public interface BookMapper {
     List<BookPO> listByKeywordSearch(BookKeywordSearchDTO dto);
     int countByKeywordSearch(BookKeywordSearchDTO dto);
     BookPO getById(Integer bookId);
+    void increaseLikeCount(Integer bookId);
+    void decreaseLikeCount(Integer bookId);
+    void increaseDislikeCount(Integer bookId);
+    void decreaseDislikeCount(Integer bookId);
 }

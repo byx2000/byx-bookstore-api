@@ -5,4 +5,5 @@ import byx.web.bookstore.pojo.dto.EvaluateDTO;
 public interface EvaluateService {
     boolean isLike(EvaluateDTO dto);
     boolean isDislike(EvaluateDTO dto);
+    void like(EvaluateDTO dto);
 }
