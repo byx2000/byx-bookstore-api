@@ -6,4 +6,5 @@ public interface EvaluateService {
     boolean isLike(EvaluateDTO dto);
     boolean isDislike(EvaluateDTO dto);
     void like(EvaluateDTO dto);
+    void dislike(EvaluateDTO dto);
 }

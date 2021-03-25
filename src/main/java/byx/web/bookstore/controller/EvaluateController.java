@@ -43,4 +43,13 @@ public class EvaluateController {
         evaluateService.like(dto);
         return Result.success();
     }
+
+    @PostMapping("/dislike")
+    public Result<?> dislike(@RequestBody Integer bookId) {
+        EvaluateDTO dto = new EvaluateDTO();
+        dto.setUserId(userManager.getCurrentUser().getId());
+        dto.setBookId(bookId);
+        evaluateService.dislike(dto);
+        return Result.success();
+    }
 }

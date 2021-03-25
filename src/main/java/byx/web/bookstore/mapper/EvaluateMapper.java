@@ -1,7 +1,6 @@
 package byx.web.bookstore.mapper;
 
 import byx.web.bookstore.pojo.dto.EvaluateDTO;
-import org.apache.ibatis.annotations.Param;
 
 public interface EvaluateMapper {
     int count(EvaluateDTO dto);

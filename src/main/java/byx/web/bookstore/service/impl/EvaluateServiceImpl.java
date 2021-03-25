@@ -40,4 +40,18 @@ public class EvaluateServiceImpl implements EvaluateService {
             bookMapper.increaseLikeCount(dto.getBookId());
         }
     }
+
+    @Override
+    public void dislike(EvaluateDTO dto) {
+        if (evaluateMapper.count(dto) > 0) {
+            if (evaluateMapper.countOfLike(dto) > 0) {
+                evaluateMapper.update(dto, 1);
+                bookMapper.decreaseLikeCount(dto.getBookId());
+                bookMapper.increaseDislikeCount(dto.getBookId());
+            }
+        } else {
+            evaluateMapper.insert(dto, 1);
+            bookMapper.increaseDislikeCount(dto.getBookId());
+        }
+    }
 }
