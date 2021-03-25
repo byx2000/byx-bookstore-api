@@ -52,4 +52,13 @@ public class EvaluateController {
         evaluateService.dislike(dto);
         return Result.success();
     }
+
+    @PostMapping("/cancel-like")
+    public Result<?> cancelLike(@RequestBody Integer bookId) {
+        EvaluateDTO dto = new EvaluateDTO();
+        dto.setUserId(userManager.getCurrentUser().getId());
+        dto.setBookId(bookId);
+        evaluateService.cancelLike(dto);
+        return Result.success();
+    }
 }

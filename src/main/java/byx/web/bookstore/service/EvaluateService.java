@@ -7,4 +7,5 @@ public interface EvaluateService {
     boolean isDislike(EvaluateDTO dto);
     void like(EvaluateDTO dto);
     void dislike(EvaluateDTO dto);
+    void cancelLike(EvaluateDTO dto);
 }

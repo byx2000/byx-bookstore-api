@@ -46,6 +46,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                         "/evaluate/is-like",
                         "/evaluate/is-dislike",
                         "/evaluate/like",
-                        "/evaluate/dislike");
+                        "/evaluate/dislike",
+                        "/evaluate/cancel-like");
     }
 }

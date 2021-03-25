@@ -8,4 +8,5 @@ public interface EvaluateMapper {
     int countOfDislike(EvaluateDTO dto);
     void insert(EvaluateDTO dto, Integer state);
     void update(EvaluateDTO dto, Integer state);
+    void delete(EvaluateDTO dto, Integer state);
 }

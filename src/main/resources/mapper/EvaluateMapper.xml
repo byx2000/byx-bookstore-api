@@ -38,4 +38,11 @@
         AND bookId = #{dto.bookId}
     </update>
 
+    <delete id="delete">
+        DELETE FROM evaluates
+        WHERE userId = #{dto.userId}
+        AND bookId = #{dto.bookId}
+        AND state = #{state}
+    </delete>
+
 </mapper>
